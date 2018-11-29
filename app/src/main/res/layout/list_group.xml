@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/group_name_list"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Group name"
+        android:textColor="#747874"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/group_location_list"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/group_name_list"
+        android:layout_alignStart="@+id/group_name_list"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="6dp"
+        android:text="location"
+        android:textColor="#747874"
+        android:textSize="16dp" />
+
+
+    <TextView
+        android:id="@+id/group_phoneNo_list"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/group_name_list"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="57dp"
+        android:text="phone no"
+        android:textColor="#747874"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/list_group_image"
+        android:layout_width="51dp"
+        android:layout_height="42dp"
+        android:layout_alignTop="@+id/group_name_list"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="14dp" />
+
+</RelativeLayout>

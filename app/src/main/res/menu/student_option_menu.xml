@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Student update"
+        android:id="@+id/update_option_student"
+        />
+    <item
+        android:title="Student delete"
+        android:id="@+id/delete_option_student"
+        />
+    <item
+        android:title="Check marks"
+        android:id="@+id/CheckMarks_option_student"
+        />
+
+</menu>

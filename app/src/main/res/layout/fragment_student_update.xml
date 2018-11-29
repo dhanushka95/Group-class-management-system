@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:textColor="#1f201f"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:padding="5dp"
+        />
+    <EditText
+        android:id="@+id/StudentNameUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="student name"
+        android:textColor="#0232b4"
+        android:textAlignment="center"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone number"
+        android:textColor="#1f201f"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:padding="5dp"/>
+    <EditText
+        android:id="@+id/phoneNumberStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phone number"
+        android:textColor="#0232b4"
+        android:inputType="phone"
+        android:textAlignment="center"
+        android:paddingBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnStudentUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#f16d39"
+        android:text="Update student"
+        android:textColor="#ffffff"
+
+        />
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
