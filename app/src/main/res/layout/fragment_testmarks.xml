@@ -12,30 +12,31 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="9dp"
         android:text="Test number : "
-        android:textSize="20dp"
         android:textColor="#f9f9fd"
-        />
+        android:textSize="20dp"
+        android:id="@+id/testnumbertxt"/>
 
     <EditText
         android:layout_width="221dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toEndOf="@+id/testnumbertxt"
         android:hint="test number"
-        android:textColor="#f9f3f9"
-        android:textColorHint="#f9f3f9"
         android:inputType="number"
-        />
+        android:textColor="#f9f3f9"
+        android:textColorHint="#f9f3f9" />
 
     <ListView
         android:id="@+id/test_student_listview"
         android:layout_width="match_parent"
-        android:layout_height="410dp"
+        android:layout_height="388dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="52dp"
         android:layout_marginRight="0dp"
         android:divider="#f5fcf5"
         android:dividerHeight="2sp">
@@ -45,12 +46,12 @@
     <Button
         android:id="@+id/btnMark_add"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="74dp"
         android:layout_below="@+id/test_student_listview"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-3dp"
         android:layout_marginBottom="0dp"
         android:backgroundTint="#19ba07"
         android:text="Add mark"

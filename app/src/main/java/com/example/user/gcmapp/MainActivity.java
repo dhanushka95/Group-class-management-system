@@ -1,13 +1,19 @@
 package com.example.user.gcmapp;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,7 +30,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static final int PERMISSION_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,30 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         ShowFragment(9,"");
+
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkPermission()) {
+                Log.e("permission", "Permission already granted.");
+            } else {
+                requestPermission();
+            }
+        }
+
+
+
+    }
+    public boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
 
     }
 
@@ -116,7 +146,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new Student_add_fragment();
                 break;
             case 2:
-                fragment = new Group_add_fragment();
+                fragment = Group_add_fragment.getnewinstance(this);
                 break;
             case 3:
                 fragment = new Student_update_fragment();
@@ -146,6 +176,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 12:
                 fragment=TestMarks_fragment.getnewinstance(this);
+                break;
+            case 13:
+                fragment=Sendmsg_fragment.getnewinstance(this);
+                break;
+            case 14:
+                fragment= QRcreate_fragment.getInstance(value);
                 break;
             default:
                 fragment=null;

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class TestMarks_fragment extends Fragment {
     private ArrayList<DatabaseColumn> databaseColumnslist;
     private ListView listView;
     private static MainActivity MmainActivity;
-
+    Fragment fragment=null;
     public static TestMarks_fragment getnewinstance(MainActivity mainActivity){
 
         TestMarks_fragment testMarks_fragment=new TestMarks_fragment();
@@ -50,6 +51,19 @@ public class TestMarks_fragment extends Fragment {
         test_marks_adapter=new Test_marks_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(test_marks_adapter);
 
+
+        Button btnInsert=view.findViewById(R.id.btnMark_add);
+
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MmainActivity.ShowFragment(13,null);
+
+            }
+        });
+
         super.onViewCreated(view, savedInstanceState);
+
+
     }
 }
