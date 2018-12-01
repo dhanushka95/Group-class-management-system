@@ -37,7 +37,7 @@ public class TestMarks_fragment extends Fragment {
         listView=view.findViewById(R.id.test_student_listview);
 
         databaseColumnslist=new ArrayList<>();
-
+/*
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","herath","0555718897","1"));
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","rohitha","0555718897","2"));
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","dilan","0555718897","3"));
@@ -47,7 +47,7 @@ public class TestMarks_fragment extends Fragment {
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","l","0555718897","7"));
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","m","0555718897","8"));
         databaseColumnslist.add(new DatabaseColumn(1,"a","","","1","n","0555718897","9"));
-
+*/
         test_marks_adapter=new Test_marks_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(test_marks_adapter);
 

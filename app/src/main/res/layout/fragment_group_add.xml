@@ -28,7 +28,7 @@
     android:paddingBottom="5dp"
         />
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/group_name_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="name"
@@ -44,7 +44,7 @@
         android:textAlignment="center"
         android:padding="5dp"/>
     <EditText
-        android:id="@+id/location"
+        android:id="@+id/group_location_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="location"
@@ -60,7 +60,7 @@
         android:textAlignment="center"
         android:padding="5dp"/>
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/group_phoneNumber_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="phone number"

@@ -41,7 +41,7 @@ public class Attendence_fragment extends Fragment {
         listView=view.findViewById(R.id.list_Attendence_listview);
 
         databaseColumnslist=new ArrayList<>();
-
+/*
         databaseColumnslist.add(new DatabaseColumn(1,"dhanushka","okkampitiya","12345","10"));
         databaseColumnslist.add(new DatabaseColumn(2,"dayawansha","monaragala","12","10"));
         databaseColumnslist.add(new DatabaseColumn(3,"herath","okkampitiya","12345","10"));
@@ -60,6 +60,7 @@ public class Attendence_fragment extends Fragment {
         databaseColumnslist.add(new DatabaseColumn(16,"q","monaragala","12","10"));
         databaseColumnslist.add(new DatabaseColumn(17,"r","okkampitiya","12345","10"));
         databaseColumnslist.add(new DatabaseColumn(18,"s","monaragala","12","10"));
+        */
 
         attendence_list_adapter=new Attendence_list_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(attendence_list_adapter);

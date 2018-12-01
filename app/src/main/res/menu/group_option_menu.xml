@@ -25,4 +25,8 @@
         android:title="Group Delete"
         android:id="@+id/Delete_option_group"
         />
+    <item
+        android:title="QR code"
+        android:id="@+id/QR_option_group"
+        />
 </menu>

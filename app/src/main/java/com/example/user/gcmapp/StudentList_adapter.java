@@ -95,10 +95,10 @@ public class StudentList_adapter extends BaseAdapter {
             }
         });
 
-        txtSid.setText(mDatabaseColumnList.get(position).getStudentId());
-        txtSname.setText(mDatabaseColumnList.get(position).getStudentName());
+       // txtSid.setText(mDatabaseColumnList.get(position).getStudentId());
+       // txtSname.setText(mDatabaseColumnList.get(position).getStudentName());
 
-        v.setTag(mDatabaseColumnList.get(position).getStudentId());
+        //v.setTag(mDatabaseColumnList.get(position).getStudentId());
         return v;
 
     }

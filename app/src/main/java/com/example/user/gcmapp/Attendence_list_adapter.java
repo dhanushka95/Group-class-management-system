@@ -49,7 +49,7 @@ public class Attendence_list_adapter extends BaseAdapter {
 
         CheckBox checkBox=v.findViewById(R.id.list_attendence_checkbox);
 
-        checkBox.setText(mDatabaseColumnList.get(position).getName());
+        //checkBox.setText(mDatabaseColumnList.get(position).getName());
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 

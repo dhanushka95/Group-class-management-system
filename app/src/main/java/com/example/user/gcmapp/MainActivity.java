@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
                 fragment = new Student_update_fragment();
                 break;
             case 4:
-                fragment = new Group_update_fragment();
+                fragment = Group_update_fragment.getInstance(value);
                 break;
             case 5:
                 fragment = new Student_delete_fragment();

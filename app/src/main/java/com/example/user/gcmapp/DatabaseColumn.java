@@ -2,84 +2,64 @@ package com.example.user.gcmapp;
 
 public class DatabaseColumn {
 
-    private String name;
-    private String location;
-    private String phone_no;
-    private String groupId;
+    private String class_name;
+    private String class_location;
+    private String class_phone_no;
+    private String class_Id;
     private int id;
     private String marks="0";
+
+    private boolean selected;
+    public boolean isSelected() {
+        return selected;
+    }
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     public String getMarks() {
         return marks;
     }
-
     public void setMarks(String marks) {
         this.marks = marks;
     }
 
-    private  String studentName,StudentPhoneNumber,StudentId;
-    private boolean selected;
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
-    public boolean isSelected() {
-        return selected;
-    }
-    public String getStudentName() {
-        return studentName;
+    public DatabaseColumn() {
+
+
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public String getClass_name() {
+        return class_name;
     }
 
-    public String getStudentPhoneNumber() {
-        return StudentPhoneNumber;
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
     }
 
-    public void setStudentPhoneNumber(String studentPhoneNumber) {
-        StudentPhoneNumber = studentPhoneNumber;
+    public String getClass_location() {
+        return class_location;
     }
 
-    public String getStudentId() {
-        return StudentId;
+    public void setClass_location(String class_location) {
+        this.class_location = class_location;
     }
 
-    public void setStudentId(String studentId) {
-        StudentId = studentId;
+    public String getClass_phone_no() {
+        return class_phone_no;
     }
 
-    public DatabaseColumn(int id, String name, String location, String phone_no, String groupId, String studentName, String studentPhoneNumber, String studentId) {
-        this.name = name;
-        this.location = location;
-        this.phone_no = phone_no;
-        this.groupId = groupId;
-        this.studentName = studentName;
-        StudentPhoneNumber = studentPhoneNumber;
-        StudentId = studentId;
-        this.id = id;
+    public void setClass_phone_no(String class_phone_no) {
+        this.class_phone_no = class_phone_no;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public String getClass_Id() {
+        return class_Id;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
-
-
-
-
-    public DatabaseColumn(int i, String group_name, String group_location, String phone_no, String group_id) {
-        this.id=i;
-        this.name=group_name;
-        this.location=group_location;
-        this.phone_no=phone_no;
-        this.groupId=group_id;
-
-
+    public void setClass_Id(String class_Id) {
+        this.class_Id = class_Id;
     }
 
     public int getId() {
@@ -88,30 +68,5 @@ public class DatabaseColumn {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getPhone_no() {
-        return phone_no;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPhone_no(String phone_no) {
-        this.phone_no = phone_no;
     }
 }

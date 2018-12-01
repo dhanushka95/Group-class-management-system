@@ -44,13 +44,11 @@ public class GroupList_fragment extends Fragment {
 
         databaseColumnslist=new ArrayList<>();
 
-        databaseColumnslist.add(new DatabaseColumn(1,"dhanushka","okkampitiya","12345","10"));
-        databaseColumnslist.add(new DatabaseColumn(2,"dayawansha","monaragala","12","20"));
-        databaseColumnslist.add(new DatabaseColumn(3,"herath","okkampitiya","12345","10"));
-        databaseColumnslist.add(new DatabaseColumn(4,"hm","monaragala","12","20"));
-        databaseColumnslist.add(new DatabaseColumn(5,"kb","okkampitiya","12345","10"));
-        databaseColumnslist.add(new DatabaseColumn(6,"rm","monaragala","12","20"));
 
+
+        SQLitedatabase sqLitedatabase=new SQLitedatabase(getContext());
+
+        databaseColumnslist=sqLitedatabase.getGroupList();
         groupList_adapter=new GroupList_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(groupList_adapter);
 

@@ -55,9 +55,9 @@ public class GroupList_adapter extends BaseAdapter {
         TextView txtGphone=(TextView)v.findViewById(R.id.group_phoneNo_list);
         ImageView imgGlistitem=(ImageView)v.findViewById(R.id.list_group_image);
 
-        txtGname.setText(mDatabaseColumnList.get(position).getName());
-        txtGlocation.setText(mDatabaseColumnList.get(position).getLocation());
-        txtGphone.setText(mDatabaseColumnList.get(position).getPhone_no());
+        txtGname.setText(mDatabaseColumnList.get(position).getClass_name());
+        txtGlocation.setText(mDatabaseColumnList.get(position).getClass_location());
+        txtGphone.setText(mDatabaseColumnList.get(position).getClass_phone_no());
 
 
 
@@ -91,7 +91,7 @@ public class GroupList_adapter extends BaseAdapter {
 
                                 break;
                             case R.id.Update_option_group:
-                                mainActivity.ShowFragment(4,null);
+                                mainActivity.ShowFragment(4,mDatabaseColumnList.get(position).getClass_Id());
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
@@ -111,6 +111,11 @@ public class GroupList_adapter extends BaseAdapter {
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
+                            case R.id.QR_option_group:
+                                mainActivity.ShowFragment(14,mDatabaseColumnList.get(position).getClass_Id());
+                               // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getGroupId(), Toast.LENGTH_LONG).show();
+
+                                break;
 
                             default:
                                 break;
@@ -126,7 +131,7 @@ public class GroupList_adapter extends BaseAdapter {
             }
         });
 
-        v.setTag(mDatabaseColumnList.get(position).getGroupId());
+        v.setTag(mDatabaseColumnList.get(position).getClass_Id());
         return v;
     }
 }

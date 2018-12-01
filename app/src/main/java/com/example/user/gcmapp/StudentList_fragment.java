@@ -39,10 +39,11 @@ public class StudentList_fragment extends Fragment {
 
         listView=view.findViewById(R.id.list_student_listview);
         databaseColumnslistStudent=new ArrayList<>();
+        /*
         databaseColumnslistStudent.add(new DatabaseColumn(1,"dhanushka","","","123","herath","0555718897","1"));
         databaseColumnslistStudent.add(new DatabaseColumn(1,"dayawansha","","","12","rohitha","0555718897","2"));
         databaseColumnslistStudent.add(new DatabaseColumn(1,"kb","","","13","dilan","0555718897","3"));
-
+*/
         studentList_adapter=new StudentList_adapter(getContext(),databaseColumnslistStudent,MmainActivity);
         listView.setAdapter(studentList_adapter);
 

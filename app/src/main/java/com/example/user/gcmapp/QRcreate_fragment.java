@@ -42,18 +42,20 @@ public class QRcreate_fragment extends Fragment {
     ImageView qrImage;
     Button Shair;
    static String inputValue;
+    static String saveName;
     String savePath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPPQRCodeImage/";
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
 
-    Date currentTime = Calendar.getInstance().getTime();
-    String saveName=currentTime+"_"+inputValue;
+    static Date currentTime = Calendar.getInstance().getTime();
+
 
     static  Fragment qr=null;
     public static Fragment getInstance(String value){
 
         qr=new QRcreate_fragment();
         inputValue=value;
+        saveName=currentTime+"_"+inputValue;
         return qr;
     }
 
@@ -72,7 +74,7 @@ public class QRcreate_fragment extends Fragment {
 
         Shair = (Button)view.findViewById(R.id.btnQRshair);
 
-        inputValue = "1234";
+
         if (inputValue.length() > 0) {
             WindowManager manager = (WindowManager)getActivity().getSystemService(WINDOW_SERVICE);
             Display display = manager.getDefaultDisplay();
@@ -90,6 +92,7 @@ public class QRcreate_fragment extends Fragment {
             try {
                 bitmap = qrgEncoder.encodeAsBitmap();
                 qrImage.setImageBitmap(bitmap);
+                Toast.makeText(getContext(),inputValue,Toast.LENGTH_SHORT).show();
             } catch (WriterException e) {
                 Log.v(TAG, e.toString());
             }
@@ -102,7 +105,9 @@ public class QRcreate_fragment extends Fragment {
         try {
             save = QRGSaver.save(savePath, saveName, bitmap, QRGContents.ImageType.IMAGE_JPEG);
             result = save ? "Image Saved" : "Image Not Saved";
-            Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
+            if(save==false) {
+                Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -112,11 +117,15 @@ public class QRcreate_fragment extends Fragment {
         Shair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+try {
+    Intent share = new Intent(Intent.ACTION_SEND);
+    share.setType("image/*");
+    share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(savePath + "/" + saveName + ".jpg")));
+    startActivity(Intent.createChooser(share, "Share QR via"));
+}catch (Exception e){
 
-                Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("image/*");
-                share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(savePath+"/"+saveName+".jpg")));
-                startActivity(Intent.createChooser(share,"Share via"));
+    Toast.makeText(getContext(),"can't share",Toast.LENGTH_SHORT).show();
+}
             }
         });
 
