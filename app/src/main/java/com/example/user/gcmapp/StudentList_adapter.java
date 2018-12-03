@@ -40,11 +40,11 @@ public class StudentList_adapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View v= View.inflate(mContext,R.layout.list_student,null);
 
-        TextView txtSid=(TextView)v.findViewById(R.id.student_id_list_textView);
+        TextView txtPhoneNo=(TextView)v.findViewById(R.id.student_phone_no_list_textView);
         TextView txtSname=(TextView)v.findViewById(R.id.student_name_list_textView);
         ImageView imgSlistitem=(ImageView)v.findViewById(R.id.list_student_image);
 
@@ -68,16 +68,16 @@ public class StudentList_adapter extends BaseAdapter {
                        switch (menuItem.getItemId()) {
                            case R.id.update_option_student:
 
-                               mainActivity.ShowFragment(3,null);
+                               mainActivity.ShowFragment(3,null,mDatabaseColumnList.get(position));
                                break;
                            case R.id.delete_option_student:
 
-                               mainActivity.ShowFragment(5,null);
+                               mainActivity.ShowFragment(5,null,mDatabaseColumnList.get(position));
                                break;
 
                            case R.id.CheckMarks_option_student:
 
-                               mainActivity.ShowFragment(10,null);
+                               mainActivity.ShowFragment(10,null,mDatabaseColumnList.get(position));
 
                                break;
 
@@ -95,10 +95,10 @@ public class StudentList_adapter extends BaseAdapter {
             }
         });
 
-       // txtSid.setText(mDatabaseColumnList.get(position).getStudentId());
-       // txtSname.setText(mDatabaseColumnList.get(position).getStudentName());
+        txtPhoneNo.setText(mDatabaseColumnList.get(position).getStudent_phone_no());
+        txtSname.setText(mDatabaseColumnList.get(position).getStudent_name());
 
-        //v.setTag(mDatabaseColumnList.get(position).getStudentId());
+        v.setTag(mDatabaseColumnList.get(position).getStudent_id());
         return v;
 
     }

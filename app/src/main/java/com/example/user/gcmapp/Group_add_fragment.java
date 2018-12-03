@@ -15,6 +15,7 @@ public class Group_add_fragment extends Fragment {
     private static MainActivity MmainActivity;
     private EditText GroupName,GroupLocation,GroupPhoneNumber;
     SQLitedatabase sqLitedatabase,sqLitedatabaseGid;
+
     public static Group_add_fragment getnewinstance(MainActivity mainActivity) {
 
         Group_add_fragment group_add_fragment=new Group_add_fragment();
@@ -45,7 +46,7 @@ public class Group_add_fragment extends Fragment {
                 //Toast.makeText(getActivity(),"click group",Toast.LENGTH_SHORT).show();
                 DatabaseColumn databaseColumn=new DatabaseColumn();
 
-                    int gId=sqLitedatabaseGid.GetRowCountGroup()+1;//use for group id
+                    int gId=sqLitedatabaseGid.GetMaxGroupId()+1;//use for group id
 
                     databaseColumn.setClass_Id(gId+"");
                     databaseColumn.setClass_name(GroupName.getText().toString());
@@ -54,7 +55,7 @@ public class Group_add_fragment extends Fragment {
 
                 sqLitedatabase.InsertGroupData(databaseColumn);
 
-                MmainActivity.ShowFragment(14,databaseColumn.getClass_Id().toString());
+                MmainActivity.ShowFragment(14,databaseColumn.getClass_Id().toString(),null);
 
             }
         });

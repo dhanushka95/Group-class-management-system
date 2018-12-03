@@ -80,39 +80,40 @@ public class GroupList_adapter extends BaseAdapter {
                         switch (menuItem.getItemId()) {
                             case R.id.Student_option_group:
 
-                              mainActivity.ShowFragment(8,null);
+                              mainActivity.ShowFragment(8,mDatabaseColumnList.get(position).getClass_Id(),null);
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.Attemdence_option_group:
 
-                                mainActivity.ShowFragment(11,null);
+                                mainActivity.ShowFragment(11,null,null);
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.Update_option_group:
-                                mainActivity.ShowFragment(4,mDatabaseColumnList.get(position).getClass_Id());
+                                mainActivity.ShowFragment(4,mDatabaseColumnList.get(position).getClass_Id(),null);
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
 
                             case R.id.Delete_option_group:
-                                mainActivity.ShowFragment(6,null);
+                                mainActivity.ShowFragment(6,mDatabaseColumnList.get(position).getClass_Id(),null);
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.Student_add_option_group:
-                                mainActivity.ShowFragment(1,null);
+
+                                mainActivity.ShowFragment(1,null,mDatabaseColumnList.get(position));
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.Test_marks_option_group:
-                                mainActivity.ShowFragment(12,null);
+                                mainActivity.ShowFragment(12,null,null);
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.QR_option_group:
-                                mainActivity.ShowFragment(14,mDatabaseColumnList.get(position).getClass_Id());
+                                mainActivity.ShowFragment(14,mDatabaseColumnList.get(position).getClass_Id(),null);
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getGroupId(), Toast.LENGTH_LONG).show();
 
                                 break;

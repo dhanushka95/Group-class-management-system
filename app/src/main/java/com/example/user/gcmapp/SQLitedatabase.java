@@ -137,7 +137,19 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
             Toast.makeText(mcontex,"Can't update",Toast.LENGTH_SHORT).show();
         }
     }
+public void DeleteGroup(String group_id){
 
+    String quary="DELETE FROM class WHERE class_id='"+group_id+"'";
+    try {
+        mDB.execSQL(quary);
+
+    }catch (android.database.SQLException ex){
+
+        Toast.makeText(mcontex,"Can't delete",Toast.LENGTH_SHORT).show();
+
+    }
+
+}
 
     public DatabaseColumn  GetGroupData(String id){
 
@@ -157,14 +169,103 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
     }
 
 
-    public int GetRowCountGroup(){
-
+    public int GetMaxGroupId(){
+        int count=0;
         mDB.isOpen();
-        String q = "SELECT * FROM class";
+        String q = "SELECT MAX(class_id) as max_group_id FROM class";
         Cursor result = mDB.rawQuery(q,null);
-        int count=result.getCount();
+        result.moveToNext();
+        count=Integer.parseInt(result.getString(0)+"");
+
+        if(result.getCount()!=0) {
+            mDB.close();
+            return count;
+        }else{
+            mDB.close();
+            return 0;
+        }
+    }
+public int GetMaxStudentId(){
+    int count=0;
+    mDB.isOpen();
+    String q = "SELECT MAX(student_id) as max_student_id FROM student";
+    Cursor result = mDB.rawQuery(q,null);
+    result.moveToNext();
+    count=Integer.parseInt(result.getString(0)+"");
+
+    if(result.getCount()!=0) {
         mDB.close();
         return count;
+    }else{
+        mDB.close();
+        return 0;
+    }
+
+}
+
+    public boolean InsertStudentData(DatabaseColumn databaseColumn){
+
+        String q = "INSERT INTO `student` VALUES('"+databaseColumn.getClass_Id()+"','"+databaseColumn.getStudent_id()+"','"+databaseColumn.getStudent_name()+"','"+databaseColumn.getStudent_phone_no()+"')";
+        try {
+            mDB.execSQL(q);
+            return  true;
+        }catch (android.database.SQLException ex){
+
+            Toast.makeText(mcontex,"Can't save",Toast.LENGTH_SHORT).show();
+            return  false;
+        }
+
+    }
+    public ArrayList<DatabaseColumn> getStudentList(String class_id) {
+
+
+        ArrayList<DatabaseColumn>databaseColumnList=new ArrayList<>();
+        String q = "SELECT class.class_name,student.class_id,student_id,student_name,student_phone_number FROM student , class where student.class_id='"+class_id+"' AND student.class_id=class.class_id";
+
+        Cursor result = mDB.rawQuery(q,null);
+
+
+        while (result.moveToNext()) {
+
+            DatabaseColumn databaseColumn = new DatabaseColumn();
+
+            databaseColumn.setClass_name(result.getString(result.getColumnIndex("class_name")));
+            databaseColumn.setClass_Id(result.getString(result.getColumnIndex("class_id")));
+            databaseColumn.setStudent_id(result.getString(result.getColumnIndex("student_id")));
+            databaseColumn.setStudent_name(result.getString(result.getColumnIndex("student_name")));
+            databaseColumn.setStudent_phone_no(result.getString(result.getColumnIndex("student_phone_number")));
+
+
+            databaseColumnList.add(databaseColumn);
+        }
+        return databaseColumnList;
+    }
+
+    public void updateStudent(DatabaseColumn databaseColumn){
+
+
+        String q = "UPDATE student SET student_name='"+databaseColumn.getStudent_name()+"',student_phone_number='"+databaseColumn.getStudent_phone_no()+"' WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        try {
+            mDB.execSQL(q);
+            Toast.makeText(mcontex,"complete",Toast.LENGTH_SHORT).show();
+        }catch (android.database.SQLException ex){
+
+            Toast.makeText(mcontex,"Can't update",Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+    public void DeleteStudent(DatabaseColumn databaseColumn){
+
+        String quary="DELETE FROM student WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        try {
+            mDB.execSQL(quary);
+
+        }catch (android.database.SQLException ex){
+
+            Toast.makeText(mcontex,"Can't delete",Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override

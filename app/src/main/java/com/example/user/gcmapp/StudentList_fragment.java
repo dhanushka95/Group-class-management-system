@@ -17,12 +17,13 @@ public class StudentList_fragment extends Fragment {
     private StudentList_adapter studentList_adapter;
     private ListView listView;
     private static MainActivity MmainActivity;
-
-    public static StudentList_fragment getnewinstance(MainActivity mainActivity){
+    private SQLitedatabase sqLitedatabase;
+    private static String Mclass_id;
+    public static StudentList_fragment getnewinstance(MainActivity mainActivity,String class_id){
 
         StudentList_fragment studentList_fragment=new StudentList_fragment();
         MmainActivity=mainActivity;
-
+        Mclass_id=class_id;
         return studentList_fragment;
     }
 
@@ -38,12 +39,16 @@ public class StudentList_fragment extends Fragment {
 
 
         listView=view.findViewById(R.id.list_student_listview);
-        databaseColumnslistStudent=new ArrayList<>();
+
         /*
         databaseColumnslistStudent.add(new DatabaseColumn(1,"dhanushka","","","123","herath","0555718897","1"));
         databaseColumnslistStudent.add(new DatabaseColumn(1,"dayawansha","","","12","rohitha","0555718897","2"));
         databaseColumnslistStudent.add(new DatabaseColumn(1,"kb","","","13","dilan","0555718897","3"));
 */
+        sqLitedatabase=new SQLitedatabase(getContext());
+
+        databaseColumnslistStudent=sqLitedatabase.getStudentList(Mclass_id);
+
         studentList_adapter=new StudentList_adapter(getContext(),databaseColumnslistStudent,MmainActivity);
         listView.setAdapter(studentList_adapter);
 

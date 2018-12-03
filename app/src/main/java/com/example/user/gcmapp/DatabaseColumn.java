@@ -2,10 +2,36 @@ package com.example.user.gcmapp;
 
 public class DatabaseColumn {
 
-    private String class_name;
+    private String class_name,student_name;
     private String class_location;
-    private String class_phone_no;
+    private String class_phone_no,student_phone_no;
     private String class_Id;
+
+    public String getStudent_name() {
+        return student_name;
+    }
+
+    public void setStudent_name(String student_name) {
+        this.student_name = student_name;
+    }
+
+    public String getStudent_phone_no() {
+        return student_phone_no;
+    }
+
+    public void setStudent_phone_no(String student_phone_no) {
+        this.student_phone_no = student_phone_no;
+    }
+
+    public String getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(String student_id) {
+        this.student_id = student_id;
+    }
+
+    private String student_id;
     private int id;
     private String marks="0";
 

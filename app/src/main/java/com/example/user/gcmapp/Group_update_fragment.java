@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 public class Group_update_fragment extends Fragment {
 
-    EditText GroupName,GroupLocation,GroupPhoneNumber;
-    SQLitedatabase sqLiteDatabase,UsqLitedatabase;
+    private EditText GroupName,GroupLocation,GroupPhoneNumber;
+    private SQLitedatabase sqLiteDatabase,UsqLitedatabase;
     static  Fragment updatefragment=null;
     static String inputValue;
     public static Fragment getInstance(String value){
@@ -58,8 +58,9 @@ public class Group_update_fragment extends Fragment {
                 MdatabaseColumn.setClass_location(GroupLocation.getText().toString());
                 MdatabaseColumn.setClass_phone_no(GroupPhoneNumber.getText().toString());
                 MdatabaseColumn.setClass_Id(inputValue);
-                UsqLitedatabase.UpdateGroup(MdatabaseColumn);
+
                 try {
+                    UsqLitedatabase.UpdateGroup(MdatabaseColumn);
                     Thread.sleep(1000);
                     Toast.makeText(getContext(),"complete",Toast.LENGTH_SHORT).show();
                     getActivity().onBackPressed();

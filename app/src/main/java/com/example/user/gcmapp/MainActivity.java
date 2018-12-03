@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ShowFragment(9,"");
+        ShowFragment(9,"",null);
 
 
         if (Build.VERSION.SDK_INT >= 23) {
@@ -115,13 +115,13 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment=null;
        if (id == R.id.nav_add_group) {
         //fragment=new Group_add_fragment();
-           ShowFragment(2,null);
+           ShowFragment(2,null,null);
 
         }
         else if(id==R.id.nav_Group_List) {
 
           // fragment=new Student_add_fragment();
-           ShowFragment(7,null);
+           ShowFragment(7,null,null);
 
        }
 
@@ -138,32 +138,33 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void ShowFragment(int Type,String value){
+    public void ShowFragment(int Type,String value ,DatabaseColumn databaseColumn){
         Fragment fragment=null;
 
         switch (Type) {
             case 1:
-                fragment = new Student_add_fragment();
+                fragment = Student_add_fragment.getInstance(databaseColumn);
                 break;
             case 2:
                 fragment = Group_add_fragment.getnewinstance(this);
                 break;
             case 3:
-                fragment = new Student_update_fragment();
+                fragment =Student_update_fragment.getInstance(databaseColumn);
                 break;
             case 4:
                 fragment = Group_update_fragment.getInstance(value);
                 break;
             case 5:
-                fragment = new Student_delete_fragment();
+                fragment =Student_delete_fragment.getInstance(databaseColumn);
+                break;
             case 6:
-                fragment = new Group_delete_fragment();
+                fragment = Group_delete_fragment.getInstance(value);
                 break;
             case 7:
                 fragment=GroupList_fragment.getnewinstance(this);
                 break;
             case 8:
-                fragment=StudentList_fragment.getnewinstance(this);
+                fragment=StudentList_fragment.getnewinstance(this,value);
                 break;
             case 9:
                 fragment=new ScanQR_fragment();
