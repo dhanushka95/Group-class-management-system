@@ -86,7 +86,7 @@ public class GroupList_adapter extends BaseAdapter {
                                 break;
                             case R.id.Attemdence_option_group:
 
-                                mainActivity.ShowFragment(11,null,null);
+                                mainActivity.ShowFragment(11,null,mDatabaseColumnList.get(position));
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;
@@ -108,7 +108,7 @@ public class GroupList_adapter extends BaseAdapter {
 
                                 break;
                             case R.id.Test_marks_option_group:
-                                mainActivity.ShowFragment(12,null,null);
+                                mainActivity.ShowFragment(12,null,mDatabaseColumnList.get(position));
                                 // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getName(), Toast.LENGTH_LONG).show();
 
                                 break;

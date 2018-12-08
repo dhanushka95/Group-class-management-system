@@ -14,17 +14,18 @@
         android:text="Test number : "
         android:textColor="#f9f9fd"
         android:textSize="20dp"
-        android:id="@+id/testnumbertxt"/>
+        android:id="@+id/testnumbertxt_test_marks"/>
 
     <EditText
         android:layout_width="221dp"
         android:layout_height="wrap_content"
+        android:id="@+id/test_no_edit_test"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_toEndOf="@+id/testnumbertxt"
+        android:layout_toEndOf="@+id/testnumbertxt_test_marks"
         android:hint="test number"
         android:inputType="number"
         android:textColor="#f9f3f9"
@@ -44,7 +45,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/btnMark_add"
+        android:id="@+id/btnMark_add_test_marks"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_below="@+id/test_student_listview"

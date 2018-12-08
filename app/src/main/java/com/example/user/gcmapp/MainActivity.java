@@ -3,6 +3,7 @@ package com.example.user.gcmapp;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -123,6 +126,9 @@ public class MainActivity extends AppCompatActivity
           // fragment=new Student_add_fragment();
            ShowFragment(7,null,null);
 
+       }else if(id==R.id.db_settings){
+
+
        }
 
         if(fragment!=null){
@@ -170,16 +176,16 @@ public class MainActivity extends AppCompatActivity
                 fragment=new ScanQR_fragment();
                 break;
             case 10:
-                fragment=new Student_marks_fragment();
+                fragment=Student_marks_fragment.getnewinstance(databaseColumn);
                 break;
             case 11:
-                fragment=Attendence_fragment.getnewinstance(this);
+                fragment=Attendence_fragment.getnewinstance(databaseColumn);
                 break;
             case 12:
-                fragment=TestMarks_fragment.getnewinstance(this);
+                fragment=TestMarks_fragment.getnewinstance(this,databaseColumn);
                 break;
             case 13:
-                fragment=Sendmsg_fragment.getnewinstance(this);
+                fragment=Sendmsg_fragment.getnewinstance(this,databaseColumn);
                 break;
             case 14:
                 fragment= QRcreate_fragment.getInstance(value);

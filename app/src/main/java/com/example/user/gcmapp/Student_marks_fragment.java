@@ -1,5 +1,6 @@
 package com.example.user.gcmapp;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +21,15 @@ import java.util.ArrayList;
 
 public class Student_marks_fragment extends Fragment {
 
+    private static DatabaseColumn MdatabaseColumn;
+    public static Student_marks_fragment getnewinstance(DatabaseColumn databaseColumn){
+
+        Student_marks_fragment student_marks_fragment=new Student_marks_fragment();
+
+        MdatabaseColumn=databaseColumn;
+
+        return student_marks_fragment;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,7 +43,7 @@ public class Student_marks_fragment extends Fragment {
         BarChart chart = (BarChart) view.findViewById(R.id.bar_chart);
 
         ArrayList<BarEntry> BarEntry = new ArrayList<>();
-        BarEntry.add(new BarEntry(1, 100));
+      /*  BarEntry.add(new BarEntry(1, 100));
         BarEntry.add(new BarEntry(2, 90));
         BarEntry.add(new BarEntry(3, 95));
         BarEntry.add(new BarEntry(4, 70));
@@ -49,12 +59,17 @@ public class Student_marks_fragment extends Fragment {
         labels.add("March");
         labels.add("April");
         labels.add("May");
-        labels.add("June");
+        labels.add("June");*/
+
+      SQLitedatabase sqLitedatabase=new SQLitedatabase(getContext());
+
+      BarEntry=sqLitedatabase.getMarkForChart(MdatabaseColumn);
+      BarDataSet dataSet = new BarDataSet(BarEntry, "Test number");
 
       BarData data = new BarData(dataSet);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        chart.setData(data);
+      dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+      chart.setData(data);
 
-        chart.setDescription("No of Projects");
+        chart.setDescription("Student Marks");
     }
 }

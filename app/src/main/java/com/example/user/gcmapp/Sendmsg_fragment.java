@@ -31,11 +31,15 @@ import java.util.List;
 public class Sendmsg_fragment extends Fragment {
 
     private static MainActivity MmainActivity;
+    private static DatabaseColumn MdatabaseColumn;
+    private SQLitedatabase sqLitedatabase;
+    private ArrayList<DatabaseColumn> smsList;
 
-    public static Sendmsg_fragment getnewinstance(MainActivity mainActivity){
+    public static Sendmsg_fragment getnewinstance(MainActivity mainActivity,DatabaseColumn databaseColumn){
 
         Sendmsg_fragment sendmsgFragment=new Sendmsg_fragment();
         MmainActivity=mainActivity;
+        MdatabaseColumn=databaseColumn;
 
         return sendmsgFragment;
     }
@@ -48,34 +52,25 @@ public class Sendmsg_fragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final String sms = "hellow";
-        final String phoneNum = "0719869318";
+
         final ProgressBar progressBar = (ProgressBar)view.findViewById(R.id.spin_kit);
         Button sendSms=(Button)view.findViewById(R.id.btnSendMsg);
-        Sprite wave = new Wave();
-        progressBar.setVisibility(View.GONE);
+
+
         sendSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Sprite wave = new Wave();
                 progressBar.setVisibility(View.VISIBLE);
 
-                if(!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum)) {
-                    if (MmainActivity.checkPermission()) {
+                sqLitedatabase=new SQLitedatabase(getContext());
+                smsList=sqLitedatabase.getTestList(MdatabaseColumn.getClass_Id(),MdatabaseColumn.getTest_no());
 
-//Get the default SmsManager//
+              if(sendSmsList(smsList)==true){
+                   progressBar.setVisibility(View.GONE);
 
-                        //SmsManager smsManager = SmsManager.getDefault();
-
-//Send the SMS//
-                        sendSMS(getContext(),0,"0719869318",null,"Hi Stackoverflow! its me Maher. Sent by sim1",null,null);
-                        //smsManager.sendTextMessage(phoneNum, null, sms, null, null);
-
-
-
-                    } else {
-                        Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
-                    }
-                }
+               }
 
             }
         });
@@ -84,6 +79,39 @@ public class Sendmsg_fragment extends Fragment {
        // progressBar.setIndeterminateDrawable(wave);
 
         super.onViewCreated(view, savedInstanceState);
+    }
+
+
+    private boolean sendSmsList(ArrayList<DatabaseColumn> databaseColumnArrayList){
+
+        String sms="";
+        String phoneNum="";
+
+        for (DatabaseColumn databasecolumn:
+             databaseColumnArrayList) {
+        if(databasecolumn.getMarks()!=null) {
+            sms = "student name : " + databasecolumn.getStudent_name() + " \n" +
+                    "Test number : " + databasecolumn.getTest_no() + " \n" +
+                    "Marks : " + databasecolumn.getMarks() + "";
+
+            phoneNum = "" + databasecolumn.getStudent_phone_no() + "";
+
+
+            if (!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum)) {
+                if (MmainActivity.checkPermission()) {
+
+                    sendSMS(getContext(), 0, phoneNum, null, sms, null, null);
+
+                } else {
+                    Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+
+        }
+
+        return true;
     }
 
     public static boolean sendSMS(Context ctx, int simID, String toNum, String centerNum, String smsText, PendingIntent sentIntent, PendingIntent deliveryIntent) {

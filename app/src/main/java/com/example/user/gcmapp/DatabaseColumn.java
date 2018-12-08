@@ -6,6 +6,48 @@ public class DatabaseColumn {
     private String class_location;
     private String class_phone_no,student_phone_no;
     private String class_Id;
+    private String class_no_days;
+    private String current_date;
+    private String check;
+    private String test_no;
+
+
+    public String getTest_no() {
+        return test_no;
+    }
+
+    public void setTest_no(String test_no) {
+        this.test_no = test_no;
+    }
+
+    public String getCheck() {
+        return check;
+    }
+
+    public void setCheck(String check) {
+        this.check = check;
+        if(check.equals("true")){
+            this.selected=true;
+        }else {
+            this.selected=false;
+        }
+    }
+
+    public String getCurrent_date() {
+        return current_date;
+    }
+
+    public void setCurrent_date(String current_date) {
+        this.current_date = current_date;
+    }
+
+    public String getClass_no_days() {
+        return class_no_days;
+    }
+
+    public void setClass_no_days(String class_no_days) {
+        this.class_no_days = class_no_days;
+    }
 
     public String getStudent_name() {
         return student_name;
@@ -33,7 +75,7 @@ public class DatabaseColumn {
 
     private String student_id;
     private int id;
-    private String marks="0";
+    private String marks;
 
     private boolean selected;
     public boolean isSelected() {

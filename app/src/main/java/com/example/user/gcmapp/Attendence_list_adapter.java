@@ -18,13 +18,13 @@ public class Attendence_list_adapter extends BaseAdapter {
 
     private ArrayList<DatabaseColumn> mDatabaseColumnList;
     private Context mContext;
-    private MainActivity mainActivity;
 
-    public Attendence_list_adapter(Context context, ArrayList<DatabaseColumn> databaseColumnList,MainActivity mainActivity) {
+
+    public Attendence_list_adapter(Context context, ArrayList<DatabaseColumn> databaseColumnList) {
 
         this.mDatabaseColumnList=databaseColumnList;
         this.mContext=context;
-        this.mainActivity=mainActivity;
+
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Attendence_list_adapter extends BaseAdapter {
 
         CheckBox checkBox=v.findViewById(R.id.list_attendence_checkbox);
 
-        //checkBox.setText(mDatabaseColumnList.get(position).getName());
+        checkBox.setText(mDatabaseColumnList.get(position).getStudent_name());
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 

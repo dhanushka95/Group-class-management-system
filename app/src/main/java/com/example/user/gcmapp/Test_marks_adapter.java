@@ -47,13 +47,14 @@ public class Test_marks_adapter extends BaseAdapter {
         TextView txtName=(TextView)v.findViewById(R.id.list_test_name);
         EditText editText_marks=(EditText)v.findViewById(R.id.list_test_marks);
 
-       // txtName.setText(mDatabaseColumnList.get(position).getStudentName());
+        txtName.setText(mDatabaseColumnList.get(position).getStudent_name());
 
         editText_marks.addTextChangedListener(new addListenerOnTextChange(mDatabaseColumnList.get(position)));
 
         editText_marks.setText(mDatabaseColumnList.get(position).getMarks());
+        mDatabaseColumnList.get(position).setMarks(editText_marks.getText().toString());
 
-      //  v.setTag(mDatabaseColumnList.get(position).getStudentId());
+        v.setTag(mDatabaseColumnList.get(position).getStudent_id());
 
         return v;
     }
