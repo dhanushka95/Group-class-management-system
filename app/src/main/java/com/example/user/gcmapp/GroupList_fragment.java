@@ -20,13 +20,14 @@ public class GroupList_fragment extends Fragment {
     private GroupList_adapter groupList_adapter;
     private ArrayList<DatabaseColumn> databaseColumnslist;
     private ListView listView;
+    private static DatabaseColumn MdatabaseColumn;
     private static MainActivity MmainActivity;
 
-    public static GroupList_fragment getnewinstance(MainActivity mainActivity){
+    public static GroupList_fragment getnewinstance(MainActivity mainActivity,DatabaseColumn databaseColumn){
 
         GroupList_fragment groupList_fragment=new GroupList_fragment();
         MmainActivity=mainActivity;
-
+        MdatabaseColumn=databaseColumn;
         return groupList_fragment;
     }
 
@@ -47,8 +48,22 @@ public class GroupList_fragment extends Fragment {
 
 
         SQLitedatabase sqLitedatabase=new SQLitedatabase(getContext());
+        if(MdatabaseColumn==null) {
 
-        databaseColumnslist=sqLitedatabase.getGroupList();
+            databaseColumnslist = sqLitedatabase.getGroupList();
+
+        }else {
+        try{
+            ArrayList<DatabaseColumn>TempArry=new ArrayList<>();
+
+            TempArry.add(sqLitedatabase.GetGroupData(MdatabaseColumn.getClass_Id()));
+            databaseColumnslist=TempArry;
+        }catch (Exception ex){
+
+            Toast.makeText(getContext(),"QR is no valied",Toast.LENGTH_SHORT).show();
+
+        }
+        }
         groupList_adapter=new GroupList_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(groupList_adapter);
 

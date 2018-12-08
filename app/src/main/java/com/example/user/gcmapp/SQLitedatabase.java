@@ -156,15 +156,18 @@ public void DeleteGroup(String group_id){
     public DatabaseColumn  GetGroupData(String id){
 
         DatabaseColumn databaseColumnRow=new DatabaseColumn();
-        String q = "SELECT * FROM CLASS WHERE class_id='"+id+"' ";
+        if(id!=null) {
+            String q = "SELECT * FROM class WHERE class_id='" + id + "' ";
 
-        Cursor result = mDB.rawQuery(q,null);
+            Cursor result = mDB.rawQuery(q, null);
 
             result.moveToNext();
             databaseColumnRow.setClass_Id(result.getString(result.getColumnIndex("class_id")));
             databaseColumnRow.setClass_name(result.getString(result.getColumnIndex("class_name")));
             databaseColumnRow.setClass_location(result.getString(result.getColumnIndex("class_location")));
             databaseColumnRow.setClass_phone_no(result.getString(result.getColumnIndex("class_phone_number")));
+
+        }
 
         return databaseColumnRow;
 

@@ -33,6 +33,7 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     private static final int PERMISSION_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -126,9 +129,10 @@ public class MainActivity extends AppCompatActivity
           // fragment=new Student_add_fragment();
            ShowFragment(7,null,null);
 
-       }else if(id==R.id.db_settings){
 
+       }else if(id==R.id.nav_QR){
 
+           ShowFragment(9,null,null);
        }
 
         if(fragment!=null){
@@ -142,6 +146,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public ScanQR_fragment scanQR_fragmentTemp=null;
+    public void setScnFragment(ScanQR_fragment fragment){
+
+        scanQR_fragmentTemp=fragment;
     }
 
     public void ShowFragment(int Type,String value ,DatabaseColumn databaseColumn){
@@ -167,13 +176,13 @@ public class MainActivity extends AppCompatActivity
                 fragment = Group_delete_fragment.getInstance(value);
                 break;
             case 7:
-                fragment=GroupList_fragment.getnewinstance(this);
+                fragment=GroupList_fragment.getnewinstance(this,databaseColumn);
                 break;
             case 8:
                 fragment=StudentList_fragment.getnewinstance(this,value);
                 break;
             case 9:
-                fragment=new ScanQR_fragment();
+                fragment=ScanQR_fragment.getnewinstance(this);
                 break;
             case 10:
                 fragment=Student_marks_fragment.getnewinstance(databaseColumn);
@@ -211,6 +220,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
         IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(result!=null)
         {
@@ -221,7 +231,9 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
             }
             else {
+                scanQR_fragmentTemp.resultQR.setText(result.getContents());
                 Toast.makeText(getApplicationContext(),result.getContents(),Toast.LENGTH_LONG).show();
+
 
             }
 
@@ -232,4 +244,8 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
+
+
+
+
 }

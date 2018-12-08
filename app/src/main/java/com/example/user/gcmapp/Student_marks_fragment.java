@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -41,6 +42,8 @@ public class Student_marks_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         BarChart chart = (BarChart) view.findViewById(R.id.bar_chart);
+    try {
+
 
         ArrayList<BarEntry> BarEntry = new ArrayList<>();
       /*  BarEntry.add(new BarEntry(1, 100));
@@ -61,15 +64,18 @@ public class Student_marks_fragment extends Fragment {
         labels.add("May");
         labels.add("June");*/
 
-      SQLitedatabase sqLitedatabase=new SQLitedatabase(getContext());
+        SQLitedatabase sqLitedatabase = new SQLitedatabase(getContext());
 
-      BarEntry=sqLitedatabase.getMarkForChart(MdatabaseColumn);
-      BarDataSet dataSet = new BarDataSet(BarEntry, "Test number");
+        BarEntry = sqLitedatabase.getMarkForChart(MdatabaseColumn);
+        BarDataSet dataSet = new BarDataSet(BarEntry, "Test number");
 
-      BarData data = new BarData(dataSet);
-      dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-      chart.setData(data);
+        BarData data = new BarData(dataSet);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.setData(data);
 
         chart.setDescription("Student Marks");
+    }catch (Exception ex){
+        Toast.makeText(getContext(),"Not result",Toast.LENGTH_SHORT).show();
+    }
     }
 }
