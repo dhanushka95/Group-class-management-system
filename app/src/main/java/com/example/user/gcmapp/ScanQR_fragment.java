@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class ScanQR_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button ScanQR=(Button)view.findViewById(R.id.btnScanQr);
+        final ImageView scanImage=(ImageView)view.findViewById(R.id.imageBarcodevalue_scan);
         resultQR=(TextView)view.findViewById(R.id.Barcodevalue_scan_qr);
         final Button Goto=(Button)view.findViewById(R.id.nextFragment_scan_qr);
         MmainActivity.setScnFragment(this);
@@ -80,6 +82,8 @@ public class ScanQR_fragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
                 Goto.setEnabled(true);
+                scanImage.setImageResource(R.drawable.finishimage);
+
 
             }
         });
@@ -90,6 +94,7 @@ public class ScanQR_fragment extends Fragment {
                     DatabaseColumn TempdatabaseColumn = new DatabaseColumn();
                     TempdatabaseColumn.setClass_Id(resultQR.getText().toString());
                     MmainActivity.ShowFragment(7, null, TempdatabaseColumn);
+                    scanImage.setImageResource(R.drawable.qrimage);
                 }catch (Exception ex){
 
                     Toast.makeText(getContext(),"QR is no valied",Toast.LENGTH_SHORT).show();
