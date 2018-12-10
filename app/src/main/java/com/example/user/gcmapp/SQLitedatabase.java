@@ -108,6 +108,7 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
             databaseColumn.setClass_name(result.getString(result.getColumnIndex("class_name")));
             databaseColumn.setClass_location(result.getString(result.getColumnIndex("class_location")));
             databaseColumn.setClass_phone_no(result.getString(result.getColumnIndex("class_phone_number")));
+            databaseColumn.setPayment_date(result.getString(result.getColumnIndex("payment")));
 
 
 
@@ -118,7 +119,7 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
 
     public void InsertGroupData(DatabaseColumn databaseColumn){
 
-        String q = "INSERT INTO `class` VALUES('"+databaseColumn.getClass_Id()+"','"+databaseColumn.getClass_name()+"','"+databaseColumn.getClass_location()+"','"+databaseColumn.getClass_phone_no()+"')";
+        String q = "INSERT INTO `class` VALUES('"+databaseColumn.getClass_Id()+"','"+databaseColumn.getClass_name()+"','"+databaseColumn.getClass_location()+"','"+databaseColumn.getClass_phone_no()+"','not payed')";
         try {
              mDB.execSQL(q);
             }catch (android.database.SQLException ex){
@@ -126,6 +127,17 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
              Toast.makeText(mcontex,"Can't save",Toast.LENGTH_SHORT).show();
             }
 
+    }
+    public void Updatepayment(DatabaseColumn databaseColumn){
+
+        String q = "UPDATE class SET payment='"+databaseColumn.getPayment_date()+"' WHERE class_id='"+databaseColumn.getClass_Id()+"'";
+        try {
+            mDB.execSQL(q);
+            Toast.makeText(mcontex,"complete",Toast.LENGTH_SHORT).show();
+        }catch (android.database.SQLException ex){
+
+            Toast.makeText(mcontex,"Can't update",Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void UpdateGroup(DatabaseColumn databaseColumn){
@@ -141,9 +153,19 @@ public SQLitedatabase( Context context, String name,SQLiteDatabase.CursorFactory
     }
 public void DeleteGroup(String group_id){
 
-    String quary="DELETE FROM class WHERE class_id='"+group_id+"'";
+    String quary1="DELETE FROM student WHERE class_id='"+group_id+"'";
+    String quary2="DELETE FROM test_marks WHERE class_id='"+group_id+"'";
+    String quary3="DELETE FROM attendence WHERE class_id='"+group_id+"'";
+    String quary4="DELETE FROM class WHERE class_id='"+group_id+"'";
+    SQLiteDatabase db1 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
+    SQLiteDatabase db2 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
+    SQLiteDatabase db3 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
+    SQLiteDatabase db4 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
     try {
-        mDB.execSQL(quary);
+        db1.execSQL(quary1);
+        db2.execSQL(quary2);
+        db3.execSQL(quary3);
+        db4.execSQL(quary4);
 
     }catch (android.database.SQLException ex){
 
@@ -180,67 +202,71 @@ public void DeleteGroup(String group_id){
         String q = "SELECT MAX(class_id) as max_group_id FROM class";
         Cursor result = mDB.rawQuery(q,null);
         result.moveToNext();
-        count=Integer.parseInt(result.getString(0)+"");
 
-        if(result.getCount()!=0) {
-            mDB.close();
-            return count;
-        }else{
+        if(result.isNull(0)) {
             mDB.close();
             return 0;
+
+        }else{
+            count=Integer.parseInt(result.getString(0)+"");
+            mDB.close();
+            return count;
         }
     }
 
-    public int GetMaxClassNumber(){
+    public int GetMaxClassNumber(String group_id){
         int count=0;
         mDB.isOpen();
-        String q = "SELECT MAX(class_no) as max_class_no FROM attendence";
+        String q = "SELECT MAX(class_no) as max_class_no FROM attendence WHERE class_id='"+group_id+"'";
         Cursor result = mDB.rawQuery(q,null);
         result.moveToNext();
-        count=Integer.parseInt(result.getString(0)+"");
 
-        if(result.getCount()!=0) {
-            mDB.close();
-            return count;
-        }else{
+
+        if(result.isNull(0)) {
             mDB.close();
             return 0;
+        }else{
+            count=Integer.parseInt(result.getString(0)+"");
+            mDB.close();
+            return count;
         }
 
     }
 
-public int GetMaxStudentId(){
+public int GetMaxStudentId(String group_id){
     int count=0;
     mDB.isOpen();
-    String q = "SELECT MAX(student_id) as max_student_id FROM student";
+    String q = "SELECT MAX(student_id) as max_student_id FROM student WHERE class_id='"+group_id+"'";
     Cursor result = mDB.rawQuery(q,null);
     result.moveToNext();
-    count=Integer.parseInt(result.getString(0)+"");
 
-    if(result.getCount()!=0) {
-        mDB.close();
-        return count;
-    }else{
+
+    if(result.isNull(0)) {
         mDB.close();
         return 0;
+    }else{
+        count=Integer.parseInt(result.getString(0)+"");
+        mDB.close();
+        return count;
     }
 
 }
 
-    public int GetMaxTestId(){
+    public int GetMaxTestId(String group_id){
         int count=0;
         mDB.isOpen();
-        String q = "SELECT MAX(test_no) FROM test_marks";
+        String q = "SELECT MAX(test_no) FROM test_marks WHERE class_id='"+group_id+"'";
         Cursor result = mDB.rawQuery(q,null);
         result.moveToNext();
-        count=Integer.parseInt(result.getString(0)+"");
 
-        if(result.getCount()!=0) {
-            mDB.close();
-            return count;
-        }else{
+
+        if(result.isNull(0)) {
             mDB.close();
             return 0;
+        }else{
+            count=Integer.parseInt(result.getString(0)+"");
+            mDB.close();
+            return count;
         }
 
     }
@@ -300,9 +326,16 @@ public int GetMaxStudentId(){
     }
     public void DeleteStudent(DatabaseColumn databaseColumn){
 
-        String quary="DELETE FROM student WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        String quary1="DELETE FROM student WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        String quary2="DELETE FROM test_marks WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        String quary3="DELETE FROM attendence WHERE class_id='"+databaseColumn.getClass_Id()+"' AND student_id='"+databaseColumn.getStudent_id()+"'";
+        SQLiteDatabase db1 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
+        SQLiteDatabase db2 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
+        SQLiteDatabase db3 = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
         try {
-            mDB.execSQL(quary);
+            db1.execSQL(quary1);
+            db2.execSQL(quary2);
+            db3.execSQL(quary3);
 
         }catch (android.database.SQLException ex){
 
@@ -343,7 +376,7 @@ public int GetMaxStudentId(){
 
 
         ArrayList<DatabaseColumn>databaseColumnList=new ArrayList<>();
-        String q = "SELECT attendence.class_id,attendence.student_id,attendence.class_no,attendence.current_date,attendence.check_student,student.student_name FROM attendence ,student WHERE attendence.class_id='"+groupId+"' AND attendence.class_no='"+no_of_day+"' AND attendence.student_id=student.student_id";
+        String q = "SELECT attendence.class_id,attendence.student_id,attendence.class_no,attendence.current_date,attendence.check_student,student.student_name FROM attendence ,student WHERE attendence.class_id='"+groupId+"' AND attendence.class_no='"+no_of_day+"' AND attendence.student_id=student.student_id AND attendence.class_id=student.class_id";
 
         Cursor result = mDB.rawQuery(q,null);
 
@@ -391,7 +424,7 @@ public int GetMaxStudentId(){
 
 
         ArrayList<DatabaseColumn>databaseColumnList=new ArrayList<>();
-        String q = "SELECT test_marks.class_id,test_marks.student_id,test_marks.test_no,test_marks.marks,student.student_name,student.student_phone_number FROM test_marks ,student WHERE test_marks.class_id='"+groupId+"' AND test_marks.test_no='"+no_of_test+"' AND test_marks.student_id=student.student_id";
+        String q = "SELECT test_marks.class_id,test_marks.student_id,test_marks.test_no,test_marks.marks,student.student_name,student.student_phone_number FROM test_marks ,student WHERE test_marks.class_id='"+groupId+"' AND test_marks.test_no='"+no_of_test+"' AND test_marks.student_id=student.student_id AND test_marks.class_id=student.class_id";
 
         Cursor result = mDB.rawQuery(q,null);
 
@@ -429,6 +462,25 @@ public int GetMaxStudentId(){
 
 
         return TempMark;
+    }
+
+    public ArrayList<DatabaseColumn> getAttendenceCheckList(String groupId,String student_id) {
+
+
+        ArrayList<DatabaseColumn>databaseColumnList=new ArrayList<>();
+        String q = "SELECT * FROM  attendence WHERE student_id='"+student_id+"' AND class_id='"+groupId+"' ";
+
+        Cursor result = mDB.rawQuery(q,null);
+        while (result.moveToNext()) {
+
+            DatabaseColumn databaseColumn = new DatabaseColumn();
+
+            databaseColumn.setCurrent_date(result.getString(result.getColumnIndex("current_date")));
+            databaseColumn.setClass_no_days(result.getString(result.getColumnIndex("class_no")));
+
+            databaseColumnList.add(databaseColumn);
+        }
+        return databaseColumnList;
     }
 
     @Override

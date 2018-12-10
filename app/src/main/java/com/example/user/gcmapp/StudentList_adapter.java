@@ -80,6 +80,11 @@ public class StudentList_adapter extends BaseAdapter {
                                mainActivity.ShowFragment(10,null,mDatabaseColumnList.get(position));
 
                                break;
+                           case R.id.Check_Attendence_option_student:
+
+                               mainActivity.ShowFragment(16,null,mDatabaseColumnList.get(position));
+
+                               break;
 
                            default:
                                break;

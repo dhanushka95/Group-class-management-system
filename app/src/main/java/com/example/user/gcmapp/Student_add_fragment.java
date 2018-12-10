@@ -52,7 +52,7 @@ public class Student_add_fragment extends Fragment {
                 sqLitedatabase=new SQLitedatabase(getContext());
                 sqLitedatabaseInsert=new SQLitedatabase(getContext());
 
-                int studentId=sqLitedatabase.GetMaxStudentId()+1;
+                int studentId=sqLitedatabase.GetMaxStudentId(MdatabaseColumn.getClass_Id())+1;
 
                 databaseColumn.setClass_Id(MdatabaseColumn.getClass_Id());
                 databaseColumn.setStudent_name(StudentName.getText().toString());

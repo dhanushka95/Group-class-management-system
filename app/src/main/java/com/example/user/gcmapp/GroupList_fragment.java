@@ -67,12 +67,12 @@ public class GroupList_fragment extends Fragment {
         groupList_adapter=new GroupList_adapter(getContext(),databaseColumnslist,MmainActivity);
         listView.setAdapter(groupList_adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(),"Group name : "+view.getTag(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"Group name : "+view.getTag(),Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         super.onViewCreated(view, savedInstanceState);
     }
 }

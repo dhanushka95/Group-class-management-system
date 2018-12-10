@@ -54,11 +54,12 @@ public class GroupList_adapter extends BaseAdapter {
         TextView txtGlocation=(TextView)v.findViewById(R.id.group_location_list);
         TextView txtGphone=(TextView)v.findViewById(R.id.group_phoneNo_list);
         ImageView imgGlistitem=(ImageView)v.findViewById(R.id.list_group_image);
+        TextView paymentDate=(TextView)v.findViewById(R.id.payment_date_list_group);
 
         txtGname.setText(mDatabaseColumnList.get(position).getClass_name());
         txtGlocation.setText(mDatabaseColumnList.get(position).getClass_location());
         txtGphone.setText(mDatabaseColumnList.get(position).getClass_phone_no());
-
+        paymentDate.setText(mDatabaseColumnList.get(position).getPayment_date());
 
 
         imgGlistitem.setImageResource(R.drawable.ic_more_vert_black);
@@ -115,6 +116,11 @@ public class GroupList_adapter extends BaseAdapter {
                             case R.id.QR_option_group:
                                 mainActivity.ShowFragment(14,mDatabaseColumnList.get(position).getClass_Id(),null);
                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getGroupId(), Toast.LENGTH_LONG).show();
+
+                                break;
+                            case R.id.Payment_option_group:
+                                mainActivity.ShowFragment(15,mDatabaseColumnList.get(position).getClass_Id(),mDatabaseColumnList.get(position));
+                                // Toast.makeText(mContext, "Add to Wish List Clicked at position " + " : " + mDatabaseColumnList.get(position).getGroupId(), Toast.LENGTH_LONG).show();
 
                                 break;
 

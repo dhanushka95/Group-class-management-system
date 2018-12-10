@@ -53,7 +53,7 @@ public class Attendence_fragment extends Fragment {
 
 
         getClassNumberOfDay=new SQLitedatabase(getContext());
-        int maxClassNumber=getClassNumberOfDay.GetMaxClassNumber()+1;
+        int maxClassNumber=getClassNumberOfDay.GetMaxClassNumber(MdatabaseColumn.getClass_Id())+1;
 
         GroupName.setText(MdatabaseColumn.getClass_name());
         txtNUmberOfClass.setText(maxClassNumber+"");

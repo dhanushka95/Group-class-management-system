@@ -10,7 +10,15 @@ public class DatabaseColumn {
     private String current_date;
     private String check;
     private String test_no;
+    private String payment_date;
 
+    public String getPayment_date() {
+        return payment_date;
+    }
+
+    public void setPayment_date(String payment_date) {
+        this.payment_date = payment_date;
+    }
 
     public String getTest_no() {
         return test_no;

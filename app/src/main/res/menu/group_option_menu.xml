@@ -29,4 +29,8 @@
         android:title="QR code"
         android:id="@+id/QR_option_group"
         />
+    <item
+        android:title="Payment"
+        android:id="@+id/Payment_option_group"
+        />
 </menu>

@@ -10,6 +10,10 @@
         android:id="@+id/delete_option_student"
         />
     <item
+        android:title="Check Attendence"
+        android:id="@+id/Check_Attendence_option_student"
+        />
+    <item
         android:title="Check marks"
         android:id="@+id/CheckMarks_option_student"
         />

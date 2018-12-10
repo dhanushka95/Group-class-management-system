@@ -51,7 +51,7 @@ public class TestMarks_fragment extends Fragment {
         listView=view.findViewById(R.id.test_student_listview);
         test_no=view.findViewById(R.id.test_no_edit_test);
         sqLitedatabase=new SQLitedatabase(getContext());
-        int testNumber=sqLitedatabase.GetMaxTestId()+1;
+        int testNumber=sqLitedatabase.GetMaxTestId(MdatabaseColumn.getClass_Id())+1;
         test_no.setText(testNumber+"");
         MdatabaseColumn.setTest_no(test_no.getText().toString());
 

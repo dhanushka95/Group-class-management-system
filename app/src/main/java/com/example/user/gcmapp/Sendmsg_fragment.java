@@ -14,8 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -34,6 +37,7 @@ public class Sendmsg_fragment extends Fragment {
     private static DatabaseColumn MdatabaseColumn;
     private SQLitedatabase sqLitedatabase;
     private ArrayList<DatabaseColumn> smsList;
+    private Spinner spinner_sim_list;
 
     public static Sendmsg_fragment getnewinstance(MainActivity mainActivity,DatabaseColumn databaseColumn){
 
@@ -56,6 +60,13 @@ public class Sendmsg_fragment extends Fragment {
         final ProgressBar progressBar = (ProgressBar)view.findViewById(R.id.spin_kit);
         Button sendSms=(Button)view.findViewById(R.id.btnSendMsg);
 
+        spinner_sim_list=(Spinner)view.findViewById(R.id.spineer_sim_send_sms);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(getContext(),R.array.sim,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+
+
+        spinner_sim_list.setAdapter(adapter);
+
 
         sendSms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +82,8 @@ public class Sendmsg_fragment extends Fragment {
                    progressBar.setVisibility(View.GONE);
 
                }
+
+
 
             }
         });
@@ -100,7 +113,7 @@ public class Sendmsg_fragment extends Fragment {
             if (!TextUtils.isEmpty(sms) && !TextUtils.isEmpty(phoneNum)) {
                 if (MmainActivity.checkPermission()) {
 
-                    sendSMS(getContext(), 0, phoneNum, null, sms, null, null);
+                    sendSMS(getContext(), selectSim(), phoneNum, null, sms, null, null);
 
                 } else {
                     Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
@@ -154,6 +167,14 @@ public class Sendmsg_fragment extends Fragment {
             Log.e("apipas", "Exception:" + e.getMessage());
         }
         return false;
+    }
+
+    public int selectSim(){
+        int Selection=0;
+
+        Selection=spinner_sim_list.getSelectedItemPosition();
+
+        return Selection;
     }
 
 

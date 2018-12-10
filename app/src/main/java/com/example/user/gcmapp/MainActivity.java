@@ -199,6 +199,12 @@ public class MainActivity extends AppCompatActivity
             case 14:
                 fragment= QRcreate_fragment.getInstance(value);
                 break;
+            case 15:
+                fragment=Payment_fragment.getInstance(databaseColumn);
+                break;
+            case 16:
+                fragment=Student_attendence_check.getInstance(databaseColumn);
+                break;
             default:
                 fragment=null;
                 break;
