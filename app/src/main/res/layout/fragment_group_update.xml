@@ -67,11 +67,17 @@
 
     <Button
         android:id="@+id/btnGroupUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:backgroundTint="#f16d39"
         android:text="Update group"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_background"
         android:textColor="#ffffff"
+
 
         />
     </LinearLayout>

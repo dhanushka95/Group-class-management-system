@@ -16,7 +16,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="Group name"
-        android:textColor="#747874"
+        android:textColor="#099f09"
         android:textSize="16dp" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="6dp"
         android:text="location"
-        android:textColor="#747874"
+        android:textColor="#099f09"
         android:textSize="16dp" />
 
 
@@ -41,7 +41,7 @@
         android:layout_marginStart="-1dp"
         android:layout_marginTop="57dp"
         android:text="phone no"
-        android:textColor="#747874"
+        android:textColor="#099f09"
         android:textSize="16dp" />
 
     <ImageView
@@ -60,6 +60,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="1dp"
         android:layout_marginTop="94dp"
+        android:textColor="#9f5909"
         android:text="payment : "/>
 
     <TextView
@@ -70,6 +71,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="78dp"
         android:layout_marginTop="94dp"
+        android:textColor="#ed540d"
         android:text="Month/Year" />
 
 </RelativeLayout>

@@ -65,11 +65,17 @@
 
     <Button
         android:id="@+id/btnGroupDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#f51e0b"
         android:text="Delete group"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#ba0719"
         android:textColor="#ffffff"
+
 
         />
 

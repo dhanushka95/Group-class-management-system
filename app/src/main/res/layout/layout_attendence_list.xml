@@ -10,7 +10,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="19dp"
         android:layout_marginTop="13dp"
-        android:text="class no : " />
+        android:text="class no : "
+        android:textColor="#099f09"/>
 
     <TextView
         android:id="@+id/layout_attendence_class_no"
@@ -21,6 +22,7 @@
         android:layout_marginStart="98dp"
         android:layout_marginTop="13dp"
         android:layout_marginBottom="-27dp"
+        android:textColor="#9f6d09"
         android:text="class no" />
 
     <TextView
@@ -30,6 +32,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="19dp"
         android:layout_marginTop="34dp"
+        android:textColor="#099f09"
         android:text="date - time : " />
 
     <TextView
@@ -40,6 +43,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="99dp"
         android:layout_marginTop="34dp"
+        android:textColor="#bf290b"
         android:text="date - time" />
 
 </RelativeLayout>

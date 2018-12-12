@@ -188,6 +188,7 @@ public void DeleteGroup(String group_id){
             databaseColumnRow.setClass_name(result.getString(result.getColumnIndex("class_name")));
             databaseColumnRow.setClass_location(result.getString(result.getColumnIndex("class_location")));
             databaseColumnRow.setClass_phone_no(result.getString(result.getColumnIndex("class_phone_number")));
+            databaseColumnRow.setPayment_date(result.getString(result.getColumnIndex("payment")));
 
         }
 

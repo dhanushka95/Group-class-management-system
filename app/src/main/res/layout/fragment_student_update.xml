@@ -70,11 +70,17 @@
 
     <Button
         android:id="@+id/btnStudentUpdate_student_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#f16d39"
         android:text="Update student"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#ba4c07"
         android:textColor="#ffffff"
+
 
         />
     </LinearLayout>

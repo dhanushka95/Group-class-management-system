@@ -58,13 +58,14 @@
 
     <Button
         android:id="@+id/btnAttendenceMark_attendence_add"
-        android:layout_width="match_parent"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list_Attendence_add_listview"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="14dp"
-        android:backgroundTint="#f51e0b"
-        android:text="OK"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#ba0719"
+        android:text="ok"
         android:textColor="#ffffff" />
 </RelativeLayout>

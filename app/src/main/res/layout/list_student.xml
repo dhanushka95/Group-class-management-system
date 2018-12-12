@@ -19,7 +19,7 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="6dp"
         android:text="Student name"
-        android:textColor="#747874"
+        android:textColor="#099f09"
         android:textSize="16dp" />
 
     <TextView
@@ -30,8 +30,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="21dp"
         android:layout_marginTop="36dp"
-        android:text="Student id"
-        android:textColor="#747874"
+        android:text="Student phone number"
+        android:textColor="#099f09"
         android:textSize="16dp" />
 
 

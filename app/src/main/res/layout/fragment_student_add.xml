@@ -74,11 +74,17 @@
 
     <Button
         android:id="@+id/btnAddStudent_student_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#19ba07"
         android:text="Add student"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#19ba07"
         android:textColor="#ffffff"
+
 
         />
 

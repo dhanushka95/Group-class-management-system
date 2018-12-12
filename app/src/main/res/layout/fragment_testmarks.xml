@@ -46,14 +46,13 @@
 
     <Button
         android:id="@+id/btnMark_add_test_marks"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_below="@+id/test_student_listview"
-        android:layout_alignParentStart="true"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-3dp"
-        android:layout_marginBottom="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/button_background"
         android:backgroundTint="#19ba07"
         android:text="Add mark"
         android:textColor="#ffffff" />

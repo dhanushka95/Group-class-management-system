@@ -20,15 +20,18 @@
       />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
         android:id="@+id/btnQRshair"
-        android:layout_alignParentStart="true"
+        android:text="share"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/colorPrimary"
-        android:text="shair" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#ba7807"
+        android:textColor="#ffffff"/>
 
     </LinearLayout>
 </ScrollView>
