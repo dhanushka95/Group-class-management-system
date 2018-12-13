@@ -1,15 +1,18 @@
 package com.example.user.gcmapp;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -469,7 +472,7 @@ public int GetMaxStudentId(String group_id){
 
 
         ArrayList<DatabaseColumn>databaseColumnList=new ArrayList<>();
-        String q = "SELECT * FROM  attendence WHERE student_id='"+student_id+"' AND class_id='"+groupId+"' ";
+        String q = "SELECT * FROM  attendence WHERE student_id='"+student_id+"' AND class_id='"+groupId+"' AND check_student='true'";
 
         Cursor result = mDB.rawQuery(q,null);
         while (result.moveToNext()) {
@@ -483,6 +486,63 @@ public int GetMaxStudentId(String group_id){
         }
         return databaseColumnList;
     }
+
+    public void copyFile() {
+        String filename = "DBgcmApp.db";
+        String savePath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/";
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = new FileInputStream(DATABASE_FULL_PATH);
+            String newFileName = savePath + "/" + filename;
+            out = new FileOutputStream(newFileName);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            in.close();
+            in = null;
+            out.flush();
+            out.close();
+            out = null;
+            Toast.makeText(mcontex,"Export complete",Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+           Toast.makeText(mcontex,e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public void pastFile() {
+
+        String getPath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/DBgcmApp.db";
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = new FileInputStream(getPath);
+            String newFileName = DATABASE_FULL_PATH;
+            out = new FileOutputStream(newFileName);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            in.close();
+            in = null;
+            out.flush();
+            out.close();
+            out = null;
+            Toast.makeText(mcontex,"Import complete",Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(mcontex,e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {

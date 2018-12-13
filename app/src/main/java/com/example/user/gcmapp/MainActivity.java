@@ -133,6 +133,14 @@ public class MainActivity extends AppCompatActivity
        }else if(id==R.id.nav_QR){
 
            ShowFragment(9,null,null);
+       }else if(id==R.id.db_export){
+
+           SQLitedatabase sqLitedatabase=new SQLitedatabase(this);
+           sqLitedatabase.copyFile();
+       }else if(id==R.id.db_import){
+
+           SQLitedatabase sqLitedatabase=new SQLitedatabase(this);
+           sqLitedatabase.pastFile();
        }
 
         if(fragment!=null){

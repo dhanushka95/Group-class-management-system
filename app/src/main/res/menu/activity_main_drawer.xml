@@ -37,9 +37,13 @@
     <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/db_settings"
+                android:id="@+id/db_export"
                 android:icon="@drawable/ic_import_export_black_24dp"
-                android:title="Database settings" />
+                android:title="Database export" />
+            <item
+                android:id="@+id/db_import"
+                android:icon="@drawable/ic_import_export_black_24dp"
+                android:title="Database import" />
 
         </menu>
     </item>
