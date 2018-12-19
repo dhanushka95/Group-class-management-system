@@ -143,14 +143,6 @@ public class MainActivity extends AppCompatActivity
            sqLitedatabase.pastFile();
        }
 
-        if(fragment!=null){
-
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.screen_area,fragment);
-            fragmentTransaction.commit();
-        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
