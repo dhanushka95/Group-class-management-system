@@ -41,7 +41,7 @@ public class QRcreate_fragment extends Fragment {
     // edtValue;
     ImageView qrImage;
     Button Shair;
-   static String inputValue;
+    static String inputValue;
     static String saveName;
     String savePath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/Image/";
     Bitmap bitmap;

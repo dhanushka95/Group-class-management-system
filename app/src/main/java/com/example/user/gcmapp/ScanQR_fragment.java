@@ -97,7 +97,7 @@ public class ScanQR_fragment extends Fragment {
                     scanImage.setImageResource(R.drawable.qrimage);
                 }catch (Exception ex){
 
-                    Toast.makeText(getContext(),"QR is no valied",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"QR is not valied",Toast.LENGTH_SHORT).show();
 
                 }
             }

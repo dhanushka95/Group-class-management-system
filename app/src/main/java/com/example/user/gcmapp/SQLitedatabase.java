@@ -489,7 +489,7 @@ public int GetMaxStudentId(String group_id){
 
     public void copyFile() {
         String filename = "DBgcmApp.db";
-        String savePath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/";
+        String savePath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/Database/";
 
         InputStream in = null;
         OutputStream out = null;
@@ -516,7 +516,7 @@ public int GetMaxStudentId(String group_id){
     }
     public void pastFile() {
 
-        String getPath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/DBgcmApp.db";
+        String getPath = Environment.getExternalStorageDirectory().getPath() + "/GcmAPP/Database/DBgcmApp.db";
 
         InputStream in = null;
         OutputStream out = null;
@@ -537,7 +537,7 @@ public int GetMaxStudentId(String group_id){
             out = null;
             Toast.makeText(mcontex,"Import complete",Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(mcontex,e.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(mcontex,"unable to find suitable database file",Toast.LENGTH_SHORT).show();
         }
 
     }

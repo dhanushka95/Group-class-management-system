@@ -16,11 +16,6 @@
        android:background="#ffffff"
        android:paddingTop="50dp">
 
-      <ImageView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:src="@drawable/imgeback1"
-          android:scaleType="centerCrop"/>
 
    </FrameLayout>
 
