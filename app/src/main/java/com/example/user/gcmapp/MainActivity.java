@@ -1,6 +1,7 @@
 package com.example.user.gcmapp;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -136,10 +137,12 @@ public class MainActivity extends AppCompatActivity
        }else if(id==R.id.db_export){
 
            SQLitedatabase sqLitedatabase=new SQLitedatabase(this);
+           SetProgres("Exporting ...");
            sqLitedatabase.copyFile();
        }else if(id==R.id.db_import){
 
            SQLitedatabase sqLitedatabase=new SQLitedatabase(this);
+           SetProgres("Importing ...");
            sqLitedatabase.pastFile();
        }
 
@@ -251,7 +254,26 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void SetProgres(String message){
 
+        final ProgressDialog dialog;
+        dialog = new ProgressDialog(MainActivity.this);
+        dialog.setMessage(message);
+        dialog.show();
+        Thread thread=new Thread(){
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
+                    dialog.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+
+    }
 
 
 }
